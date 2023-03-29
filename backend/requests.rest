@@ -1,0 +1,44 @@
+GET http://localhost:9000 HTTP/1.1
+
+###
+
+POST http://localhost:9000/api/register
+Content-Type: application/json
+
+{
+    "names": "Mr cole",
+    "regno": "20RP01732",
+    "password": "asdff"
+}
+
+###
+
+POST http://localhost:9000/api/application
+Content-Type: application/json
+
+{
+    "email": "patix@coder.com",
+    "address": "123 Main st",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sint atque voluptatibus porro, odit neque dolore dolor dignissimos. Tempore animi reprehenderit deleniti consequatur ipsam quos sint eum nulla atque et."
+}
+
+###
+
+GET http://localhost:9000/api/students/641b8e8dccabcc39f5a2bac5 HTTP/1.1
+
+###
+
+DELETE http://localhost:9000/api/students/delete/641b8e8dccabcc39f5a2bac5 HTTP/1.1
+
+###
+
+PATCH http://localhost:9000/api/students/update/641dd7afedd290b9490ee2fd HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "jordan@michael.com",
+    "description": "Michael Jordan is widely considered one of the greatest basketball players of all time. He played for the Chicago Bulls and Washington Wizards in his 15-year career, winning six NBA championships, five MVP awards, and ten scoring titles. Jordan's career was characterized by his incredible athleticism, competitiveness, and clutch performances in high-pressure situations. He was known for his signature moves, including the jumpman dunk and his ability to hit game-winning shots. Jordan's legacy extends beyond his on-court achievements, as he has also become an icon in popular culture, with his own shoe line and numerous endorsement deals.",
+    "address": "Kingston, avenue"
+
+}
+
