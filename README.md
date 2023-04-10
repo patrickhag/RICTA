@@ -10,7 +10,6 @@
 ## Credits
 * Kudos to Muslim 👏, who helped me out when i was stuck.
 
+⚠ RMK: It's an open source toy project anyone can contribute to it. 😁
 
-Best Regard
-
-Thanks..👊
+Best Regards
