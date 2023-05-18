@@ -38,20 +38,23 @@ export default function AdminPortal() {
 }
 
 function AllApplicantsElements({ allApplicants }) {
-  function acceptApplicant(id) {
-    const data = new FormData()
-    data.set('id', id)
-    fetch('http://localhost:9000/email', {
+  async function acceptApplicant(email) {
+    await fetch('http://localhost:9000/accept', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: data,
+      body: JSON.stringify({ email }),
     })
   }
-  //
-  function rejectApplicant() {
-    console.log(456)
+  async function rejectApplicant(email) {
+    await fetch('http://localhost:9000/reject', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
   }
   return (
     <tbody>
@@ -65,12 +68,12 @@ function AllApplicantsElements({ allApplicants }) {
             <i
               className='fa fa-check w3-button w3-hover-green w3-round'
               title='Accept'
-              onClick={() => acceptApplicant(applicant._id)}
+              onClick={() => acceptApplicant(applicant.email)}
             ></i>
             <i
               className='fa fa-times w3-button w3-hover-red w3-round'
               title='Reject'
-              onClick={rejectApplicant}
+              onClick={() => rejectApplicant(applicant.email)}
             ></i>
           </td>
         </tr>
