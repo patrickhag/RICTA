@@ -8,7 +8,7 @@ export default function header() {
                 <a href="#home" className="w3-bar-item w3-button w3-hover-none"><img src={rictaImg} alt="" height="30" width="40" /></a>
                 <div className="w3-right w3-hide-small">
                     <a href="#" className="w3-bar-item w3-button w3-hover-none">About</a>
-                    <a href="#" className="w3-bar-item w3-button w3-hover-none">Contacts</a>
+                    <a href="#" className="w3-bar-item w3-button w3-hover-none">Feedbacks</a>
                 </div>
             </div>
         </div>

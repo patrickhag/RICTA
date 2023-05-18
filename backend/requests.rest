@@ -1,4 +1,4 @@
-GET http://localhost:9000 HTTP/1.1
+xGET http://localhost:9000 HTTP/1.1
 
 ###
 
@@ -41,4 +41,13 @@ Content-Type: application/json
     "address": "Kingston, avenue"
 
 }
+
+###
+
+GET http://localhost:9000/api/admin HTTP/1.1
+
+###
+
+GET http://localhost:9000/email HTTP/1.1
+
 

@@ -5,16 +5,16 @@ import Header from "./Header";
 import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
 import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
+import Status from "./Status";
 
 const API_BASE = "http://localhost:9000/api/students";
 
 export default function StudentDetails() {
-  const navigateTo = useNavigate();
   const { id } = useParams();
   const [student, setStudent] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showStatus, setShowStatus] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -43,6 +43,9 @@ export default function StudentDetails() {
   const openDeleteModal = () => {
     setShowDeleteModal(true);
   };
+  const openStatus = () => {
+    setShowStatus(true);
+  };
 
   if (!student) {
     return <div>Loading...</div>;
@@ -62,6 +65,12 @@ export default function StudentDetails() {
           id={id}
           showDeleteModal={showDeleteModal}
           setShowDeleteModal={setShowDeleteModal}
+        />
+      )}
+      {showStatus && (
+        <Status
+          showStatus={showStatus}
+          setShowStatus={setShowStatus}
         />
       )}
 
@@ -102,7 +111,7 @@ export default function StudentDetails() {
               >
                 <i className="w3-xlarge fa fa-trash"></i>&nbsp;Cancel
               </button>
-              <button className="w3-col m3 w3-button w3-round w3-margin-left">
+              <button className="w3-col m3 w3-button w3-round w3-margin-left" onClick={openStatus}>
                 <i className="w3-xlarge fa fa-info-circle"></i>&nbsp;Status
               </button>
             </div>

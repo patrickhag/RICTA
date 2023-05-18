@@ -71,9 +71,18 @@ router.get("/students/edit/:id", async (req, res) => {
   res.json({ status: "ok", student: student });
 });
 
+router.get("/admin", async (req, res) => {
+  try {
+    const student = await StudentApplicationData.find()
+    res.json({ student })
+  } catch (e) {
+    res.json(e.message)
+  }
+})
+
 router.patch(
   "/students/update/:id",
-  async (req, res, next) => {
+  async (req, res, next) => { 
     req.student = await StudentApplicationData.findById(req.params.id);
     next();
   },
@@ -87,12 +96,12 @@ function saveStudentAndRedirect() {
     student.description = req.body.description;
     student.address = req.body.address;
     try {
-      await student.save();
-      res.json({ status: "ok", student });
+      await student.save()
+      res.json({ status: "ok", student })
     } catch (e) {
-      res.json(e.message);
+      res.json(e.message)
     }
-  };
+  }
 }
 
 function asyncHandler(callback) {

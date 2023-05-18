@@ -22,17 +22,14 @@ export default function Login() {
           password,
         }),
       },
-      console.log(123)
     );
     const data = await response.json();
     if (data.user) {
-      // localStorage.setItem('token', data.user)
       alert(`welcome in competition`);
       navigateTo("/applications");
     } else {
       alert("check your username and password");
     }
-    console.log(data);
   }
 
   return (

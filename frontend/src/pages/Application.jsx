@@ -98,7 +98,6 @@ export default function Dashboard() {
             Submit application
           </button>
         </form>
-        {/* {showModal && (<Modal />)} */}
       </div>
       <Footer />
     </>
