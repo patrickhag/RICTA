@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { format } from 'date-fns'
+import React, { useState, useEffect } from "react"
+import { format } from "date-fns"
 
 export default function AdminPortal() {
   const [allApplicants, setAllApplicants] = useState([])
 
+  const token = localStorage.getItem("token")
   const getAllApplicants = async () => {
-    const res = await fetch('http://localhost:9000/api/admin')
-    const data = await res.json()
-    setAllApplicants(data.student)
-    return data
+    try {
+      const res = await fetch("http://localhost:9000/api/admin", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        credentials: "include",
+      })
+      const data = await res.json()
+      setAllApplicants(data.student)
+      return data
+    } catch (error) {
+      console.error("Error:", error)
+    }
   }
 
   useEffect(() => {
@@ -39,19 +49,19 @@ export default function AdminPortal() {
 
 function AllApplicantsElements({ allApplicants }) {
   async function acceptApplicant(email) {
-    await fetch('http://localhost:9000/accept', {
-      method: 'POST',
+    await fetch("http://localhost:9000/api/accept", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     })
   }
   async function rejectApplicant(email) {
-    await fetch('http://localhost:9000/reject', {
-      method: 'POST',
+    await fetch("http://localhost:9000/api/reject", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     })
@@ -62,7 +72,7 @@ function AllApplicantsElements({ allApplicants }) {
         <tr key={applicant.email}>
           <td>{applicant.email}</td>
           <td>{applicant.address}</td>
-          <td>{format(new Date(applicant.date), 'MMM d, yyyy HH:mm')}</td>
+          <td>{format(new Date(applicant.date), "MMM d, yyyy HH:mm")}</td>
           <td>{applicant.description}</td>
           <td>
             <i
